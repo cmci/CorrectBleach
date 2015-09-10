@@ -160,9 +160,9 @@ public class BleachCorrection_ExpoFit {
 		//IJ.log(Integer.toString(imp.getNChannels())+":"+Integer.toString(imp.getNSlices())+":"+ Integer.toString(imp.getNFrames()));
 		int zframes = impdimA[3];
 		int tframes = impdimA[4];
-		if (impdimA[3 > 1 && impdimA[4] > 1){	// if slices and frames are both more than 1
+		if (zframes > 1 && tframes > 1){	// if slices and frames are both more than 1
 			is3DT =true;
-			if ((impdimA[3] * impdimA[4]) != imp.getStackSize()){
+			if ((zframes * tframes) != imp.getStackSize()){
 				IJ.showMessage("slice and time frames do not match with the length of the stack. Please correct!");
 				return;
 			}
