@@ -63,7 +63,7 @@ public class BleachCorrection_ExpoFit {
 		if (curROI == null) curROI = new Roi(0, 0, imp.getWidth(), imp.getHeight());
 
 		for (int i = 0; i < imp.getStackSize(); i++){
-			curip = imp.getImageStack().getProcessor(i+1);
+			curip = imp.getImageStack().getProcessor(i + 1);
 			curip.setRoi(curROI);
 			imgstat = curip.getStatistics();
 			xA[i] = i;
@@ -71,7 +71,7 @@ public class BleachCorrection_ExpoFit {
 		}
 		CurveFitter cf = new CurveFitter(xA, yA);
 		double firstframeint = yA[0];
-		double lastframeint = yA[yA.length-1];
+		double lastframeint = yA[yA.length - 1];
 		double guess_a = firstframeint - lastframeint;
 		if (guess_a <= 0){
 			IJ.error("This sequence seems to be not decaying");
@@ -84,14 +84,14 @@ public class BleachCorrection_ExpoFit {
 		double[] fitparam = {-1*guess_a, -0.0001, guess_c, maxiteration, NumRestarts, errotTol};
 
 		cf.setInitialParameters(fitparam);
-		cf.doFit(11); //
+		cf.doFit(11); 
 		Fitter.plot(cf);
 		IJ.log(cf.getResultString());
 		return cf;
 	}
 
 	/** Curve fitting for 3D time series is done with average intensity value for
-	 * wach time point (stack intensity mean is used, so the fitted points = time point, not slice number)
+	 * each time point (per time point intensity mean is used, so the fitted points = time point, not slice number)
 	 *
 	 * @param zframes
 	 * @param tframes
@@ -107,7 +107,7 @@ public class BleachCorrection_ExpoFit {
 		for (int i = 0; i < tframes; i++){
 			curStackMean = 0.0;
 			for (int j = 0; j < zframes; j++){
-				curip = imp.getImageStack().getProcessor(i * zframes + j +1);
+				curip = imp.getImageStack().getProcessor(i * zframes + j + 1);
 				curip.setRoi(curROI);
 				imgstat = curip.getStatistics();
 				curStackMean += imgstat.mean;
@@ -118,7 +118,7 @@ public class BleachCorrection_ExpoFit {
 		}
 		CurveFitter cf = new CurveFitter(xA, yA);
 		double firstframeint = yA[0];
-		double lastframeint = yA[yA.length-1];
+		double lastframeint = yA[yA.length - 1];
 		double guess_a = firstframeint - lastframeint;
 		if (guess_a <= 0){
 			IJ.error("This sequence seems to be not decaying");
@@ -128,11 +128,11 @@ public class BleachCorrection_ExpoFit {
 		double maxiteration = 2000;
 		double NumRestarts = 2;
 		double errotTol = 10;
-		double[] fitparam = {-1*guess_a, -0.0001, guess_c, maxiteration, NumRestarts, errotTol};
+		double[] fitparam = {-1 * guess_a, -0.0001, guess_c, maxiteration, NumRestarts, errotTol};
 
 		cf.setInitialParameters(fitparam);
 
-		cf.doFit(11); //
+		cf.doFit(11); 
 		Fitter.plot(cf);
 		IJ.log(cf.getResultString());
 		return cf;
@@ -160,9 +160,9 @@ public class BleachCorrection_ExpoFit {
 		//IJ.log(Integer.toString(imp.getNChannels())+":"+Integer.toString(imp.getNSlices())+":"+ Integer.toString(imp.getNFrames()));
 		int zframes = impdimA[3];
 		int tframes = impdimA[4];
-		if (impdimA[3]>1 && impdimA[4]>1){	// if slices and frames are both more than 1
+		if (zframes > 1 && tframes > 1){	// if slices and frames are both more than 1
 			is3DT =true;
-			if ((impdimA[3] * impdimA[4]) != imp.getStackSize()){
+			if ((zframes * tframes) != imp.getStackSize()){
 				IJ.showMessage("slice and time frames do not match with the length of the stack. Please correct!");
 				return;
 			}
