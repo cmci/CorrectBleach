@@ -115,6 +115,7 @@ public class BleachCorrection implements PlugInFilter {
 		public boolean showDialog()	{
 			GenericDialog gd = new GenericDialog("Bleach Correction");
 			gd.addChoice("Correction Method :", CorrectionMethods , CorrectionMethods[CorrectionMethod]);
+			gd.addMessage("Please acknowledge DOI: 10.5281/zenodo.30769");
 			gd.showDialog();
 			if (gd.wasCanceled())
 				return false;
