@@ -14,7 +14,42 @@
 
 	<name>plugins/CorrectBleach_.jar</name>
 	<description />
-
+	<developers>
+		<developer>
+			<id>Kota</id>
+			<name>Kota Miura</name>
+			<email>miura@embl.de</email>
+			<url>http://cmci.embl.de</url>
+			<organization>EMBL Heidelberg</organization>
+			<organizationUrl>http://www.embl.de</organizationUrl>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+	</developers>
+	<contributors>
+		<contributor>
+			<name>Jens Rietdorf</name>
+			<email>j.rietdorf@gmail.com</email>
+			<roles>
+				<role>architect</role>
+			</roles>
+			<timezone>+0</timezone>
+		</contributor>
+		<contributor>
+			<name>Johannes Schindelin</name>
+			<email>johannes.schindelin@gmx.de</email>
+			<url>http://loci.wisc.edu/people/johannes-schindelin</url>
+			<organization>UW-Madison LOCI</organization>
+			<organizationUrl>http://loci.wisc.edu/</organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>-6</timezone>
+		</contributor>
+	</contributors>	
 	<scm>
 		<connection>scm:git:git://github.com/fiji/CorrectBleach</connection>
 		<developerConnection>scm:git:git@github.com:fiji/CorrectBleach</developerConnection>
